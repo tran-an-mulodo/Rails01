@@ -1,6 +1,6 @@
 
-Given(/^I want contructor user username with "(.*?)", password with "(.*?)", role with (\d+)$/) do |arg1, arg2, arg3|
-  @user=User.new(username:arg1,password:arg2,role:arg3)
+Given(/^I want contructor user username with "(.*?)", password with "(.*?)"$/) do |arg1, arg2|
+  @user=User.new(username:arg1,password:arg2)
   @count1=User.count
 end
 
