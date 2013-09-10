@@ -5,8 +5,8 @@ env:
   - DB=sqlite
 script:
   #- gem install debugger -v '1.6.1'
-  - bundle install
-  - rake db:migrate
+  #- bundle install
+  #- rake db:migrate
   - rake db:test:load
   - cucumber
 before_install:
