@@ -1,21 +1,12 @@
 language: ruby
 rvm:
-  - 2.0.0
+  - 1.9.3
 env:
   - DB=sqlite
-  # - DB=mysql
-# before_script:
-  # - "mysql -e 'create database Rails01_test;' >/dev/null"
+  - DB=mysql
+  - DB=postgresql
 script:
-  #- gem install debugger -v '1.6.1'
-  - bundle install
-  - rake db:migrate
-  - rake db:test:load
-  - bundle exec cucumber
-before_install:
-  #- gem update --system
-  - gem --version
-  
- 
-# uncomment this line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+  - RAILS_ENV=test bundle exec rake --trace db:migrate test
+before_script:
+  - mysql -e 'create database myapp_test'
+  - psql -c 'create database myapp_test' -U postgres
